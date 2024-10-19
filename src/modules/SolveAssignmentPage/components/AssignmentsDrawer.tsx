@@ -1,24 +1,24 @@
 import { IconX } from "@tabler/icons-react";
-import { assignments } from "../../../../../database";
+// import { assignments } from "../../../../../database";
 
 type Props = {
   onClose: () => void;
 };
 
 const AssignmentsDrawer = ({ onClose }: Props) => {
-  const getComplexityClasses = (complexity: string) => {
-    switch (complexity) {
-      case "EASY":
-        return "text-green-500";
-      case "MEDIUM":
-        return "text-yellow-500";
-      case "HARD":
-        return "text-red-500";
+  // const getComplexityClasses = (complexity: string) => {
+  //   switch (complexity) {
+  //     case "EASY":
+  //       return "text-green-500";
+  //     case "MEDIUM":
+  //       return "text-yellow-500";
+  //     case "HARD":
+  //       return "text-red-500";
 
-      default:
-        break;
-    }
-  };
+  //     default:
+  //       break;
+  //   }
+  // };
 
   const handleClose = () => {
     document.getElementById("drawer")?.classList.add("animate-drawer-reverse");
@@ -38,7 +38,7 @@ const AssignmentsDrawer = ({ onClose }: Props) => {
           <IconX onClick={handleClose} className="cursor-pointer" />
         </div>
 
-        <div className="flex-1 p-4 space-y-2 overflow-auto">
+        {/* <div className="flex-1 p-4 space-y-2 overflow-auto">
           {assignments?.map((assignment) => {
             return (
               <div
@@ -59,7 +59,7 @@ const AssignmentsDrawer = ({ onClose }: Props) => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );
