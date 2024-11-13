@@ -24,10 +24,14 @@ const AppLayout = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <button type="button" onClick={()=> {
-            localStorage.clear();
-            navigate('/login')
-          }} className="flex gap-1 px-3 py-1 font-semibold text-white bg-red-400 border border-red-400 rounded">
+          <button
+            type="button"
+            onClick={() => {
+              localStorage.clear();
+              navigate("/login");
+            }}
+            className="flex gap-1 px-3 py-1 font-semibold text-white bg-red-400 border border-red-400 rounded"
+          >
             <IconPower />
             Logout{" "}
           </button>
