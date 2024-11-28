@@ -108,3 +108,63 @@
   --lt-palette-neutral99: #fffbff;
   --lt-palette-neutral100: #ffffff;
 }
+
+div.unstyled * {
+  all: unset;
+  display: revert;
+  /* margin: 0;
+  padding: 0; */
+}
+
+.unstyled h1 {
+  font-size: 2em; /* Restore browser default size or customize */
+  font-weight: bold; /* Restore default weight for <h1> */
+  margin-bottom: 0.25em; /* Add some spacing below if needed */
+  color: rgb(32, 32, 32);
+}
+.unstyled h2 {
+  font-size: 1.2em; /* Restore browser default size or customize */
+  font-weight: 600; /* Restore default weight for <h1> */
+  margin-bottom: 0.25em; /* Add some spacing below if needed */
+  color: rgb(91, 91, 91);
+}
+.unstyled ol {
+  list-style: decimal;
+  margin-left: 1.5em; /* Add indent */
+}
+.unstyled ul {
+  list-style: disc; /* Restore default list style */
+  margin-left: 1.5em; /* Add indent */
+}
+
+.unstyled b,
+.unstyled strong {
+  font-weight: 700;
+}
+
+.unstyled i {
+  font-style: italic;
+}
+
+.unstyled u {
+  text-decoration: underline;
+}
+
+.unstyled s {
+  text-decoration: line-through;
+}
+
+.unstyled code {
+  background-color: rgb(238, 238, 238);
+  color: rgb(38, 38, 38);
+  padding: 4px;
+  font-family: monospace;
+  border-radius: 5px;
+  display: inline-block;
+  margin-block: 4px;
+}
+.unstyled a {
+  text-decoration: underline;
+  color: rgb(19, 122, 207);
+  cursor: pointer;
+}

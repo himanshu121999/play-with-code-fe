@@ -11,13 +11,7 @@ const ViewNotes = () => {
   const classLink = searchQuery.get("class-link");
   const topicName = searchQuery.get("topic-name");
 
-  const {
-    data: courseClassesData,
-    isLoading: isCourseClassesDataLoading,
-    isFetching: isCourseClassesDataFetching,
-  } = useGetCourseClassesQuery("");
-
-  console.log(isCourseClassesDataFetching, isCourseClassesDataLoading);
+  const { data: courseClassesData } = useGetCourseClassesQuery("");
 
   return (
     <div className="flex h-full overflow-auto">

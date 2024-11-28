@@ -1,46 +1,38 @@
-import { lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
 
-const IconEye = lazy(() =>
-  import("@tabler/icons-react").then((module) => ({ default: module.IconEye }))
-);
-const IconPaperclip = lazy(() =>
-  import("@tabler/icons-react").then((module) => ({
-    default: module.IconPaperclip,
-  }))
-);
-import Checkbox from "../../../components/Checkbox/Checkbox";
+type Props = {
+  assignment: {
+    title: string;
+    description: string;
+    isCompleted: boolean;
+    _id: string;
+  };
+};
 
-const AssignmentCard = () => {
+const AssignmentCard = ({ assignment }: Props) => {
   return (
-    <div className="flex items-center gap-3 p-3 bg-white">
-      {/* Checkbox */}
-      <Checkbox
-        checked={false}
-        onChange={(value) => {
-          console.log(value);
-        }}
-      />
+    <Link to={`/solve-assignment/${assignment?._id}`}>
+      <div className="flex items-center gap-3 p-3 bg-white">
+        {/* Title */}
+        <div className="flex-1 font-medium text-slate-600 ">
+          {assignment?.title}
+        </div>
 
-      {/* Title */}
-      <div className="flex-1 font-medium text-slate-600 ">
-        {" "}
-        Design a login page like this attachment{" "}
-      </div>
+        {/* Option Buttons */}
 
-      {/* Option Buttons */}
-      <div className="flex items-center gap-2 text-slate-500 ">
-        <button type="button" className="p-2 rounded-md hover:bg-gray-100">
-          <Suspense fallback={<div>Loading...</div>}>
-            <IconPaperclip size={16} />
-          </Suspense>
-        </button>
-        <button type="button" className="p-2 rounded-md hover:bg-gray-100">
-          <Suspense fallback={<div>Loading...</div>}>
-            <IconEye size={16} />
-          </Suspense>
-        </button>
+        <div
+          className={[
+            assignment?.isCompleted ? "bg-green-400" : "bg-rose-400",
+            "text-xs",
+            "text-white",
+            "px-2 py-1",
+            "rounded-md",
+          ]?.join(" ")}
+        >
+          {assignment?.isCompleted ? "Submitted" : "Not Submitted"}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

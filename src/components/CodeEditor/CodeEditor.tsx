@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Editor, OnChange } from "@monaco-editor/react";
-import { useState } from "react";
 
 type Props = {
   language?: string;
@@ -17,11 +16,11 @@ const CodeEditor = ({
   onChange,
   options = {},
 }: Props) => {
-  const [editorValue, setEditorValue] = useState(value);
+  // const [editorValue, setEditorValue] = useState(value);
 
   const handleEditorChange: OnChange = (value, ev) => {
-    setEditorValue(value || "");
     if (onChange) {
+      // onChange(value || "");
       onChange(value, ev);
     }
   };
@@ -31,7 +30,7 @@ const CodeEditor = ({
       height={"100%"}
       language={language}
       theme={theme}
-      value={editorValue}
+      value={value}
       onChange={handleEditorChange}
       options={{
         fontSize: 14,

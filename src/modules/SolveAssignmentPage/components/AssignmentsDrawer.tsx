@@ -1,30 +1,26 @@
-import { IconX } from "@tabler/icons-react";
-// import { assignments } from "../../../../../database";
+import { IconCheck, IconX } from "@tabler/icons-react";
+import { useGetAssignmentsQuery } from "../../../services/AsignmentServices";
+import { Assignment } from "../../../models/Assignment";
+import { useNavigate, useParams } from "react-router-dom";
 
 type Props = {
   onClose: () => void;
 };
 
 const AssignmentsDrawer = ({ onClose }: Props) => {
-  // const getComplexityClasses = (complexity: string) => {
-  //   switch (complexity) {
-  //     case "EASY":
-  //       return "text-green-500";
-  //     case "MEDIUM":
-  //       return "text-yellow-500";
-  //     case "HARD":
-  //       return "text-red-500";
+  const { assignmentId } = useParams();
 
-  //     default:
-  //       break;
-  //   }
-  // };
+  const { data: assignmentData } = useGetAssignmentsQuery("");
+
+  const navigate = useNavigate();
+
+  const handleAssignmentClick = (assignmentId: string) => {
+    navigate(`/solve-assignment/${assignmentId}`);
+  };
 
   const handleClose = () => {
     document.getElementById("drawer")?.classList.add("animate-drawer-reverse");
-    setTimeout(() => {
-      onClose();
-    }, 500);
+    onClose();
   };
 
   return (
@@ -38,28 +34,39 @@ const AssignmentsDrawer = ({ onClose }: Props) => {
           <IconX onClick={handleClose} className="cursor-pointer" />
         </div>
 
-        {/* <div className="flex-1 p-4 space-y-2 overflow-auto">
-          {assignments?.map((assignment) => {
+        <div className="flex-1 p-4 space-y-2 overflow-auto">
+          {assignmentData?.map((assignment: Assignment) => {
+            const isSelected = assignment?._id === assignmentId;
+
             return (
               <div
                 onClick={() => {
+                  handleAssignmentClick(assignment?._id);
                   handleClose();
                 }}
-                className="flex items-center gap-2 p-2 rounded-md cursor-pointer odd:bg-gray-100"
+                className={[
+                  "flex",
+                  "items-center",
+                  "gap-3",
+                  "p-2",
+                  "rounded-md",
+                  "cursor-pointer",
+                  isSelected ? "bg-sky-100" : "",
+                ].join(" ")}
               >
                 <div className="flex-1"> {assignment?.title} </div>
-
                 <div
-                  className={`text-xs w-[60px] text-end ${getComplexityClasses(
-                    assignment?.complexity
-                  )}`}
+                  className={`flex items-center justify-center p-1 text-white bg-green-400 rounded-full ${
+                    assignment?.isCompleted ? "blcok" : "hidden"
+                  }`}
                 >
-                  {assignment?.complexity}
+                  {" "}
+                  <IconCheck size={16} stroke={4} />{" "}
                 </div>
               </div>
             );
           })}
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import DashboardWrapper from "./modules/Dashboard/DashboardWrapper";
 import AppLayout from "./components/layout/AppLayout";
 import ViewNotes from "./modules/ViewNotes/ViewNotes";
 import LoginFormWrapper from "./modules/Login/LoginFormWrapper";
+import SolveAssignmentPage from "./modules/SolveAssignmentPage/SolveAssignmentPage";
 
 const PageRoutes = () => {
   const router = createBrowserRouter([
@@ -25,10 +26,10 @@ const PageRoutes = () => {
       ],
     },
 
-    // {
-    //   path: "/solve-assignment",
-    //   element: <SolveAssignmentPage />,
-    // },
+    {
+      path: "/solve-assignment/:assignmentId",
+      element: <SolveAssignmentPage />,
+    },
   ]);
 
   return <RouterProvider router={router} />;
